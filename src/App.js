@@ -19,18 +19,24 @@ import Contact from './components/Contact';
 import Home from './components/Home';
 import Header from './components/header';
 import './App.css';
-
+import { useAuth0 } from "@auth0/auth0-react";
+import { Spinner } from 'reactstrap';
 
 function App() {
+  const {  isLoading,isAuthenticated } = useAuth0();
+
   return (
     <Router>
        <Header/>
+      
       <div className='main-content'>
+        {isLoading ? <div className='d-flex justify-content-center align-items-center'><Spinner animation="border" /></div> : 
         <Routes>
-          <Route exact path="/" element={<Home/>} />
-          <Route path="/about" element={<About/>} />
-          <Route path="/contact" element={<Contact/>} />
+          <Route exact path="/" element={<Home isLogin={isAuthenticated}/>} />
+          <Route path="/about" element={<About isLogin={isAuthenticated}/>} />
+          <Route path="/contact" element={<Contact isLogin={isAuthenticated}/>} />
         </Routes>
+        }
       </div>
     </Router>
   );

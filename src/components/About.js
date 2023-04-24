@@ -1,9 +1,9 @@
 import React from 'react'
 
-const About =()=>{
+const About =({isLogin})=>{
     return (
         <div>
-            what you want to know
+            {!isLogin ? 'Unlock Interesting stuff after login': 'What you want to know about me'}
         </div>
     )
 }

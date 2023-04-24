@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Contact =()=>{
+const Contact =({isLogin})=>{
     return (
         <div>
-            No contacts
+            {!isLogin ? 'Unlock Interesting stuff after login': 'No Contacts'}
         </div>
     )
 }
